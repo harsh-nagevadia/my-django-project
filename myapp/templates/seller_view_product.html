@@ -1,0 +1,46 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+	<!-- hero area -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<h1>My Products</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end hero area -->
+	<!-- product section -->
+	<div class="product-section">
+		<div class="container">
+			<div class="row">
+				<!-- Single Product -->
+				{% for i in products %}
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{{i.product_image.url}}" alt="" width="250px" height="250px"></a>
+						</div>
+						<h3>{{i.product_name}}</h3>
+						<p class="product-price"><span>Per Kg</span> {{i.product_price}} </p>
+						<a href="{% url 'seller_product_details' pk=i.pk %}" class="cart-btn">Details</a>
+					</div>
+				</div>
+				{% endfor %}
+				<!-- Single Product -->
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+</html>
